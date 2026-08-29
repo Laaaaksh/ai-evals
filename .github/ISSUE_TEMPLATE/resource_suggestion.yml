@@ -1,0 +1,36 @@
+name: Resource suggestion
+description: Suggest a resource to add, update, or flag as stale in resources/curated-resources.md
+labels: ["resources"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This repo curates resources honestly, including saying when something has
+        aged or when a vendor/tool's status has changed (ownership, pricing,
+        license, standards compliance). See `resources/curated-resources.md` for
+        the format each entry follows.
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Link to the resource.
+    validations:
+      required: true
+  - type: dropdown
+    id: action
+    attributes:
+      label: What are you suggesting?
+      options:
+        - Add a new resource
+        - Update an existing entry (date, star count, aged status, etc.)
+        - Flag an existing entry as dead, wrong, or superseded
+        - Fix a broken link
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+      description: What does this cover well, when was it made, and is it still current? If you're flagging something as outdated or the facts as changed (e.g. a vendor's self-host tier, license, or OTel compliance), say specifically what changed and how you confirmed it.
+    validations:
+      required: true

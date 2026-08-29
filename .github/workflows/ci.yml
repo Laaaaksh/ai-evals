@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# Superseded runs (new commit pushed to the same branch/PR) are pure waste;
+# cancelling them early keeps the queue free. CI publishes nothing, so
+# cancellation is always safe here.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run-samples:
+    name: Run every sample's default (fixture) path
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 01 - error analysis
+        run: python3 code/01-error-analysis/analyze_taxonomy.py code/01-error-analysis/reference_labels.csv
+
+      - name: 02 - first eval suite (fixture pass rate must clear 50%)
+        run: |
+          cd code/02-first-eval-suite
+          python3 run_eval.py cases.jsonl fixture_outputs.jsonl --fail-under 0.5
+
+      - name: 03 - LLM-as-judge calibration (real Cohen's kappa, no API key)
+        run: |
+          cd code/03-llm-judge
+          python3 run_judge.py --judge v1 --judge v2
+
+      - name: 04 - OpenTelemetry GenAI tracing
+        run: |
+          cd code/04-tracing-otel
+          pip install -r requirements.txt
+          python3 agent.py
+          python3 agent.py --fail
+
+      - name: 05 - debugging non-determinism (deterministic given a fixed seed)
+        run: |
+          cd code/05-debug-nondeterminism
+          python3 diagnose.py --trials 400 --reveal
+
+      - name: 06 - regression suite (pytest, the same command a real CI gate would run)
+        run: |
+          cd code/06-regression-suite-ci
+          pip install -r requirements.txt
+          pytest test_regressions.py -v
+
+      - name: Regenerate Stage 3's gold set and diff against the committed copy
+        run: |
+          cd code/03-llm-judge
+          python3 generate_gold_set.py > /tmp/regenerated.csv
+          diff gold_labels.csv /tmp/regenerated.csv

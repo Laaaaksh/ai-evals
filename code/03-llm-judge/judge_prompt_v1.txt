@@ -1,0 +1,7 @@
+You are checking whether a customer support response is accurate.
+
+Policy: {snippet}
+
+Response: {response}
+
+Is the response grounded in the policy? Answer "grounded" or "ungrounded".
