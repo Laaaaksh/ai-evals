@@ -1,0 +1,7 @@
+{
+  "id": "case_001_lowercase_order_id",
+  "input": "hey what's up with order a1029",
+  "why_this_case_exists": "Production incident: a customer typed their order ID in lowercase. The original regex's letter class was `[A-Z]` (uppercase only), so order_id came back null and the agent asked the customer to repeat information it already had. Fixed by widening the class to `[A-Za-z]` and normalizing with .upper() on the extracted match.",
+  "buggy_output": {"order_id": null},
+  "expected": {"order_id": "A1029"}
+}

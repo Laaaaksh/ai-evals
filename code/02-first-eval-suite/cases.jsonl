@@ -1,0 +1,15 @@
+{"id": "c01", "input": "Where's my order A1029?", "expected": {"order_id": "A1029", "intent": "status", "sentiment": "neutral"}}
+{"id": "c02", "input": "I want a refund for B2044, it showed up broken and I'm pretty annoyed.", "expected": {"order_id": "B2044", "intent": "refund", "sentiment": "frustrated"}}
+{"id": "c03", "input": "Please cancel C3011 right now.", "expected": {"order_id": "C3011", "intent": "cancel", "sentiment": "neutral"}}
+{"id": "c04", "input": "This is the THIRD time D4092 has been delayed. I am furious.", "expected": {"order_id": "D4092", "intent": "status", "sentiment": "angry"}}
+{"id": "c05", "input": "Can you tell me the return window for E5081?", "expected": {"order_id": "E5081", "intent": "other", "sentiment": "neutral"}}
+{"id": "c06", "input": "F6102 never showed up, it's been 3 weeks, I need my money back.", "expected": {"order_id": "F6102", "intent": "refund", "sentiment": "frustrated"}}
+{"id": "c07", "input": "quick check - is G7013 shipped yet?", "expected": {"order_id": "G7013", "intent": "status", "sentiment": "neutral"}}
+{"id": "c08", "input": "Please cancel H8024, I changed my mind, no big deal.", "expected": {"order_id": "H8024", "intent": "cancel", "sentiment": "neutral"}}
+{"id": "c09", "input": "I've emailed twice about I9035 and NO ONE has replied, this is ridiculous.", "expected": {"order_id": "I9035", "intent": "status", "sentiment": "angry"}}
+{"id": "c10", "input": "Refund J1046 please, wrong size arrived, kind of annoying.", "expected": {"order_id": "J1046", "intent": "refund", "sentiment": "frustrated"}}
+{"id": "c11", "input": "What's the status on K2057?", "expected": {"order_id": "K2057", "intent": "status", "sentiment": "neutral"}}
+{"id": "c12", "input": "Cancel L3068 immediately, do not ship it.", "expected": {"order_id": "L3068", "intent": "cancel", "sentiment": "neutral"}}
+{"id": "c13", "input": "Do you price match Amazon? asking about a future order, not M4079 specifically.", "expected": {"order_id": "M4079", "intent": "other", "sentiment": "neutral"}}
+{"id": "c14", "input": "N5081 arrived damaged AGAIN, third time this has happened, I want a refund.", "expected": {"order_id": "N5081", "intent": "refund", "sentiment": "angry"}}
+{"id": "c15", "input": "Has O6092 shipped? Just curious, no rush.", "expected": {"order_id": "O6092", "intent": "status", "sentiment": "neutral"}}

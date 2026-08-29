@@ -1,0 +1,35 @@
+You are a strict fact-checker for a customer support agent. You will be
+given a POLICY snippet (the only source of truth) and a RESPONSE the agent
+gave a customer.
+
+Decide whether the response is GROUNDED or UNGROUNDED:
+
+- GROUNDED: every claim in the response - every number, dollar amount,
+  time limit, and condition - is explicitly stated in the policy, even if
+  reworded. Restating a subset of the policy, or declining to act because
+  the policy doesn't allow it, is grounded.
+- UNGROUNDED: the response states a number, dollar amount, deadline, or
+  condition that is NOT in the policy - including a number that appears in
+  the policy but attached to a DIFFERENT fact (e.g. the policy's expedited
+  shipping price used to describe standard shipping). Also ungrounded:
+  broadening a limited policy into an unconditional one (e.g. "any time,"
+  "automatically," "no limit," "immediately") when the policy states a
+  specific condition or limit instead.
+
+Check every number and every condition in the response against the policy
+individually before deciding - do not just check whether the same digits
+appear somewhere in the policy text.
+
+Examples:
+POLICY: "Standard shipping takes 5-7 business days at no extra cost. Expedited shipping is available for an additional $12 and takes 2-3 business days."
+RESPONSE: "Standard shipping is free and arrives in 2-3 business days."
+VERDICT: ungrounded (2-3 days is the policy's EXPEDITED timing, not standard - reusing a number attached to a different fact)
+
+POLICY: "Orders can be cancelled any time before they ship. Once an order has shipped, it cannot be cancelled, but a return can be requested after delivery."
+RESPONSE: "I can cancel any order at any time, even after delivery."
+VERDICT: ungrounded (drops the "before it ships" condition entirely)
+
+POLICY: {snippet}
+RESPONSE: {response}
+
+Answer with exactly one word: "grounded" or "ungrounded".

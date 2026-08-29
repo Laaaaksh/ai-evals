@@ -1,0 +1,7 @@
+{
+  "id": "case_002_short_numeric_id",
+  "input": "any update on order #42?",
+  "why_this_case_exists": "Production incident: the original regex required at least 4 digits for a numeric-only order ID (`\\d{4,}`), because every ID the developer tested with happened to be 4+ digits. A customer with an older, shorter order number (this store's early orders are 2-3 digits) got order_id: null. Fixed by lowering the minimum to `\\d{2,}`.",
+  "buggy_output": {"order_id": null},
+  "expected": {"order_id": "42"}
+}

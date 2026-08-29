@@ -1,0 +1,16 @@
+# Project agent memory
+
+This file is the project's committed home for project-intrinsic agent knowledge: build, test, release, architecture, and sharp-edge notes that should travel with the code.
+
+- **What this repo is**: a sequenced AI-agent-evals-and-observability curriculum (`curriculum/`, 8 stages) plus 6 runnable samples (`code/`) plus honestly-dated resource curation (`resources/`). See the root `README.md` for the pitch and `curriculum/README.md` for the stage table. Second in a series that started with `github.com/Laaaaksh/cuda-engineering` - match its tone and structure for consistency across the series.
+- **Every sample runs for real in this environment**: unlike a repo needing GPU hardware, every sample here needs only Python 3.10+ (stdlib-only for stages 01/02/03/05) or a pinned `requirements.txt` (stage 04: `opentelemetry-api`/`opentelemetry-sdk`==1.44.0; stage 06: `pytest`==9.1.1). No sample needs an API key by default - `code/common/llm_client.py` is only imported by stages 02/03's optional `--live` flag. `.github/workflows/ci.yml` actually executes every sample's default path (not just a compile/syntax check) plus `pytest` for stage 06 - keep it that way when adding samples.
+- **Fixture data has real, verified signal, not placeholder numbers**: stage 03's `gold_labels.csv` is synthetic but deterministic (`generate_gold_set.py` regenerates it byte-identical - CI diffs the committed copy against a fresh regen); its judge_v1/judge_v2 kappa numbers (0.511 → 0.742) and stage 05's diagnostic-gap numbers are actual computed output, verified while building this repo, not invented. If you change fixture data or heuristic logic in stage 03 or 05, re-run the sample and update every number quoted in that sample's README, the matching curriculum stage doc, and this file if it changed - don't hand-edit a printed number.
+- **Citation discipline**: every external link in `curriculum/*.md` and `resources/*.md` must be a URL someone actually opened and confirmed live, with an exact date/star-count, not "recent" - this was the explicit standard the repo was built to (see `resources/curated-resources.md`'s own header). Before adding or changing a citation, fetch the URL yourself; don't restate one from memory. This space moves fast (OTel GenAI semconv is still `Status: Development`; vendor ownership/pricing/self-host tiers change - promptfoo was acquired by OpenAI in March 2026, ragas changed GitHub orgs) - re-verify vendor claims periodically, don't assume they age well.
+- **Stage 06's regression-case bug reintroductions are load-bearing**: the exact `sed` commands in `code/06-regression-suite-ci/README.md` were verified to isolate to exactly one failing test each (case_001 via the `[A-Za-z]`→`[A-Z]` letter class, case_002 via the `\d{2,}`→`\d{4,}` digit minimum) with zero cross-contamination between the two. If `system_under_test.py`'s regex changes, re-verify both `sed` commands still isolate cleanly before updating the README.
+
+## Maintaining this file
+
+Keep this file for knowledge useful to almost every future agent session in this project.
+Do not repeat what the codebase already shows; point to the authoritative file or command instead.
+Prefer rewriting or pruning existing entries over appending new ones.
+When updating this file, preserve this bar for all agents and keep entries concise.

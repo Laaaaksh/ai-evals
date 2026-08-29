@@ -1,0 +1,7 @@
+{
+  "id": "case_003_negated_sentiment",
+  "input": "not upset, just wondering about B2044",
+  "why_this_case_exists": "Production incident: the original sentiment rule flagged any message containing 'upset' as frustrated, with no check for a preceding negation. A customer explicitly saying they were NOT upset got escalated as if they were, which itself upset them. Fixed by adding a negated_near() check that looks 3 words back from each frustration-word trigger for a negation word.",
+  "buggy_output": {"sentiment": "frustrated"},
+  "expected": {"order_id": "B2044", "intent": "status", "sentiment": "neutral"}
+}

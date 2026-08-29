@@ -1,0 +1,15 @@
+{"id": "c01", "output": "{\"order_id\": \"A1029\", \"intent\": \"status\", \"sentiment\": \"neutral\"}"}
+{"id": "c02", "output": "{\"order_id\": \"B2044\", \"intent\": \"refund\", \"sentiment\": \"frustrated\"}"}
+{"id": "c03", "output": "{\"order_id\": \"C3011\", \"intent\": \"cancel\", \"sentiment\": \"neutral\"}"}
+{"id": "c04", "output": "{\"order_id\": \"D4092\", \"intent\": \"status\", \"sentiment\": \"frustrated\"}"}
+{"id": "c05", "output": "{\"order_id\": \"E5081\", \"intent\": \"other\", \"sentiment\": \"neutral\""}
+{"id": "c06", "output": "{\"order_id\": \"F6102\", \"intent\": \"refund\", \"sentiment\": \"frustrated\"}"}
+{"id": "c07", "output": "{\"order_id\": \"G7013\", \"intent\": \"status\", \"sentiment\": \"neutral\"}"}
+{"id": "c08", "output": "{\"order_id\": \"H8024\", \"intent\": \"cancel\"}"}
+{"id": "c09", "output": "{\"order_id\": \"I9035\", \"intent\": \"escalation\", \"sentiment\": \"angry\"}"}
+{"id": "c10", "output": "{\"order_id\": \"J1046\", \"intent\": \"refund\", \"sentiment\": \"frustrated\"}"}
+{"id": "c11", "output": "{\"order_id\": \"K2057\", \"intent\": \"status\", \"sentiment\": \"neutral\"}"}
+{"id": "c12", "output": "{\"order_id\": \"L3068\", \"intent\": \"cancel\", \"sentiment\": \"neutral\"}"}
+{"id": "c13", "output": "{\"order_id\": \"N/A\", \"intent\": \"other\", \"sentiment\": \"neutral\"}"}
+{"id": "c14", "output": "{\"order_id\": \"N5081\", \"intent\": \"refund\", \"sentiment\": \"angry\"}"}
+{"id": "c15", "output": "{\"order_id\": \"O6092\", \"intent\": \"status\", \"sentiment\": \"angry\"}"}

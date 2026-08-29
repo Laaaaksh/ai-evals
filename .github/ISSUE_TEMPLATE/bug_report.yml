@@ -1,0 +1,40 @@
+name: Bug report
+description: Something in a sample or the curriculum is wrong
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem.
+  - type: input
+    id: location
+    attributes:
+      label: Where
+      description: File or curriculum stage this is about, e.g. `code/03-llm-judge/judges.py` or `curriculum/05-debugging-nondeterminism.md`.
+      placeholder: "code/03-llm-judge/judges.py"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What's wrong?
+      description: A runtime error, a wrong claim, a dead link, an incorrect computed number, etc. Include the exact error text or output if there is one.
+      placeholder: |
+        1. Ran `python3 run_judge.py --judge v1 --judge v2` in code/03-llm-judge
+        2. Got this error: ...
+    validations:
+      required: true
+  - type: input
+    id: python-version
+    attributes:
+      label: Python version
+      description: Output of `python3 --version`. Only needed for a runtime bug, not a doc issue.
+    validations:
+      required: false
+  - type: input
+    id: os
+    attributes:
+      label: OS
+      description: e.g. macOS 15, Ubuntu 24.04. Only needed if the bug looks platform-specific.
+    validations:
+      required: false

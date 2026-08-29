@@ -1,0 +1,25 @@
+id,failure_mode,notes
+t001,ok,correct status lookup and answer
+t002,hallucinated_policy,states a rigid "no cash refunds ever" policy with no grounding - never checked a policy tool
+t003,ignored_user_constraint,user explicitly said do not cancel; agent cancelled anyway
+t004,ok,correctly reports processing status and offers a reasonable next step
+t005,tool_arg_formatting,trailing space in order_id caused a not-found; agent recovered by asking the user instead of retrying itself
+t006,redundant_tool_calls,calls get_order_status three times with identical arguments and no new information between calls
+t007,unnecessary_refusal,address changes are a supported action (see t008) but this refuses outright with no reason given
+t008,ok,correctly checks shippability before updating the address
+t009,hallucinated_policy,invents a specific automatic price-match policy with fabricated timing details
+t010,incomplete_answer,user asked two questions; only the order status half is answered
+t011,ok,correct status lookup and answer
+t012,ok,correctly separates the status check from the do-not-cancel instruction
+t013,hallucinated_policy,invents a "lifetime return policy" with no grounding
+t014,tool_arg_formatting,retries the exact same malformed order_id instead of trying an obvious normalization (uppercase L)
+t015,ok,correctly identifies a lost-in-transit order and processes a refund with a real tool call
+t016,ok,honest about lacking access, offers a real alternative path
+t017,redundant_tool_calls,calls get_order_status twice with identical arguments and no new information between calls
+t018,ok,appropriate empathy and escalation for a repeated real failure
+t019,ok,correct status lookup and answer
+t020,hallucinated_policy,invents specific referral discount percentages with no grounding
+t021,ignored_user_constraint,user explicitly said do NOT cancel; agent cancelled anyway
+t022,incomplete_answer,user asked two questions; only the shipping status half is answered
+t023,tool_arg_formatting,first call fails on a formatting variant, but the agent self-corrects on retry and still answers correctly - a near-miss, not a full failure
+t024,ok,correctly checks state before cancelling and refunding, and only acts on the requested item
